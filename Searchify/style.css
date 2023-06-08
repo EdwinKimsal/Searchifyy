@@ -1,0 +1,38 @@
+/* Default Styling */
+*{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: .75vw;
+    padding: none;
+    border-radius: 0;
+    font-size: clamp(3vh, 8rem, 2vw);
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+/* h1 Styling */
+h1{
+    width: 100%;
+    font-size: clamp(9vh, 24rem, 6vw);
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+
+/* Form Styling */
+form{
+    width: fit-content;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+/* Button Hover */
+input[type="button"]{
+    cursor: pointer;
+}

@@ -30,5 +30,5 @@ print(sitemap)
 
 # File
 text_file = open("sitemap.js", "w")
-text_file.write('var sitemap = ' + str(sitemap) +';')
+text_file.write('var sitemap = ' + str(sitemap) + ';')
 text_file.close()

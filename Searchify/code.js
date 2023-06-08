@@ -1,7 +1,10 @@
 // Variables
 var index = [];
 
+// Search Algorithm
 function search(){
+    // Variable
+    document.getElementById('result').innerHTML = '';
     var input = document.getElementById('searchArea').value;
 
     if(input != ''){
@@ -14,21 +17,33 @@ function search(){
 
         // Check if there are any results
         if(index == ''){
-            index = 'No results.'
+            index = 'No results.';
+            document.getElementById('result').innerHTML = index;
+
+            // Reset Element and Variable
+            input = '';
+            index = [];
         }
 
-        // Set output paragraph's HTML to the index array
-        document.getElementById('result').innerHTML = index;
-
-        // Reset Element and Variable
-        document.getElementById('searchArea').value = '';
-        input = '';
-        index = [];
+        else{
+            for(let i = 0; i < index.length; i++){
+                // Set output paragraph's HTML to the index array
+                var link = document.createElement('a');
+                var linebreak = document.createElement("br");
+                link.href = index[i];
+                link.innerHTML = index[i];
+                document.getElementById('result').appendChild(link);
+                document.getElementById('result').appendChild(linebreak);
+            }
+    
+            // Reset Element and Variable
+            input = '';
+            index = [];    
+        }
     }
 
     else{
         // Reset Element and Variable
-        document.getElementById('searchArea').value = '';
         input = '';
         index = [];
 
@@ -36,4 +51,3 @@ function search(){
         document.getElementById('result').innerHTML = index;
     }
 }
-
