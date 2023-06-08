@@ -1,2 +1,2 @@
-# Searchify
+# Searchifyy
 WORK IN PROGRESS
