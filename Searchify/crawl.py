@@ -13,22 +13,28 @@ url = 'https://quotes.toscrape.com/'
 # link
 link = 'a[href]'
 
-# sitemap
-sitemap = []
+# urlArray/htmlArray
+urlArray = []
+htmlArray = []
 
-# applying request and soup
+# initial variables
 request = requests.get(url)
-soup = BeautifulSoup(request.text, 'html.parser')
+soup = BeautifulSoup(request.text, "html.parser")
 
-# appending urls
+# finding all urls
 for a in soup.select(link):
-    if a not in sitemap and 'https://' not in str(a):
-        sitemap.append(a.get('href'))
+    if 'https://quotes.toscrape.com' + a.get("href") not in urlArray and "https://" not in str(a):
+        urlArray.append('https://quotes.toscrape.com' + a.get("href"))
 
-# printing sitemap
-print(sitemap)
+        # new variables
+        url = "https://quotes.toscrape.com" + a.get("href")
+        request = requests.get(url)
+        soup = BeautifulSoup(request.text, "html.parser")
+
+        # appending info to htmlArray
+        htmlArray.append(str(soup))
 
 # File
-text_file = open("sitemap.js", "w")
-text_file.write('var sitemap = ' + str(sitemap) + ';')
+text_file = open("sitemap.js", "w", errors="ignore")
+text_file.write("var urlArray = " + str(urlArray) + ";" + "var htmlArray = " + str(htmlArray).lower())
 text_file.close()
