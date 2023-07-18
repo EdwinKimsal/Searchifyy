@@ -5,7 +5,6 @@ function score(){
     var output = document.getElementById('result');
     var booleanCountArray = [];
     var totalCountArray = [];
-    var newTitleArray = [];
     var newUrlArray = [];
     var queryArray = [];
     var countFrequency = [];
@@ -16,7 +15,6 @@ function score(){
 
     // copying arrays into newArrays
     for (var i = 0; i < urlArray.length; i++){
-        newTitleArray.push(titleArray[i]);
         newUrlArray.push(urlArray[i]);
     }
 
@@ -29,8 +27,8 @@ function score(){
         for (var i = 0; i < newUrlArray.length; i++){
             // checking each word individualy
             for (var j = 0; j < queryArray.length; j++){
-                var re = new RegExp(queryArray[j], 'g');
-                count = (htmlArray[i].match(re) || []).length;
+                var re = new RegExp(queryArray[j], 'gi');
+                count = ((urlArray[i].match(re) || []).length);
             
                 // resetting count
                 countArray.push(count);
@@ -82,10 +80,6 @@ function score(){
                     totalCountArray[j] = totalCountArray[j + 1];
                     totalCountArray[j + 1] = tempCount;
 
-                    var tempTitle = newTitleArray[j];
-                    newTitleArray[j] = newTitleArray[j + 1];
-                    newTitleArray[j + 1] = tempTitle;
-
                     var tempUrl = newUrlArray[j];
                     newUrlArray[j] = newUrlArray[j + 1];
                     newUrlArray[j + 1] = tempUrl;
@@ -101,12 +95,14 @@ function score(){
                 const link = document.createElement('a');
                 const linebreak = document.createElement('br');
                 link.href = newUrlArray[i];
-                link.innerHTML = newTitleArray[i];
+                link.innerHTML = newUrlArray[i];
                 section.appendChild(link);
                 section.appendChild(linebreak);
                 output.appendChild(section);
             }
         }
+
+        console.log(totalCountArray);
     }
 
     // reset output if query is blank
