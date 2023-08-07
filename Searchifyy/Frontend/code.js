@@ -59,7 +59,7 @@ function score(){
             }
         }
 
-        // updating the final scores for each page
+        // updating the scores for each page
         for (var i = 0; i < newUrlArray.length; i++){
             for (var j = 0; j < queryArray.length; j++){
                 if (countFrequency[j] != 0){
@@ -72,6 +72,17 @@ function score(){
             totalCount = 0;
         }
 
+        // bonus points
+        for (var i = 0; i < newUrlArray.length; i++){
+            for (var j = 0; j < queryArray.length; j++){
+                // if the query word is present
+                if (countArray[((queryArray.length * i) + j)] > 0){
+                    // add a bonus point to the site
+                    totalCountArray[i] += 1;
+                }
+            }
+        }
+
         // removing all zero score pages from the index
         for (var i = totalCountArray.length; i >= 0; i--){
             if (totalCountArray[i] == 0){
@@ -79,7 +90,7 @@ function score(){
                 newUrlArray.splice(i, 1)
             }
         }
-        
+
         function heapSort(arr){
             var N = arr.length;
         
@@ -138,7 +149,7 @@ function score(){
 
         // showing results
         for (var i = newUrlArray.length - 1; i > newUrlArray.length - 100; i--){
-            if (i > 0){
+            if (i >= 0){
                 // Set output paragraph's HTML to the index array
                 const section = document.createElement('section')
                 const link = document.createElement('a');
