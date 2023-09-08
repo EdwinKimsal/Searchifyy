@@ -5,11 +5,14 @@ function score(){
     var output = document.getElementById('result');
     var booleanCountArray = [];
     var totalCountArray = [];
+    var urlArrayCount = []
+    var tempUrlArray = [];
     var newUrlArray = [];
     var queryArray = [];
     var countFrequency = [];
     var countArray = [];
     var totalCount = 0;
+    var avgScore = 0;
     var count = 0;
     output.innerHTML = '';
 
@@ -22,7 +25,7 @@ function score(){
     queryArray = query.split(" ");
 
     // checking if query IS NOT blank
-    if (queryArray != []){
+    if (query != ''){
         // creating scores
         for (var i = 0; i < newUrlArray.length; i++){
             // checking each word individualy
@@ -59,7 +62,7 @@ function score(){
             }
         }
 
-        // updating the scores for each page
+        // dividing each score per word by the frequency of each word per page
         for (var i = 0; i < newUrlArray.length; i++){
             for (var j = 0; j < queryArray.length; j++){
                 if (countFrequency[j] != 0){
@@ -71,7 +74,7 @@ function score(){
             totalCountArray.push(totalCount);
             totalCount = 0;
         }
-
+        
         // bonus points
         for (var i = 0; i < newUrlArray.length; i++){
             for (var j = 0; j < queryArray.length; j++){
@@ -87,10 +90,40 @@ function score(){
         for (var i = totalCountArray.length; i >= 0; i--){
             if (totalCountArray[i] == 0){
                 totalCountArray.splice(i, 1);
-                newUrlArray.splice(i, 1)
+                newUrlArray.splice(i, 1);
             }
         }
 
+        // getting the avgScore
+        for (var i = 0; i < totalCountArray.length; i++){
+            avgScore += totalCountArray[i];
+        }
+
+        avgScore = ((avgScore / totalCountArray.length) - .0001);
+
+        // getting rid of all sites less than the avg score
+        for (var i = totalCountArray.length; i >= 0; i--){
+            if (totalCountArray[i] < avgScore){
+                totalCountArray.splice(i, 1);
+                newUrlArray.splice(i, 1);
+            }
+        }
+
+        // getting the amount of characters after the domain
+        for (var i = 0; i < newUrlArray.length; i++){
+            tempUrlArray.push(newUrlArray[i].slice(newUrlArray[i].indexOf('/', 8), -1));
+        }
+
+        // getting the length of each object in the newUrlArray
+        urlArrayCount = tempUrlArray.map(u => u.length);
+
+        // dividing the scores by the amount to characters per url
+        for (var i = 0; i < totalCountArray.length; i++){
+            var denominator = urlArrayCount[i] * .01;
+            totalCountArray[i] = totalCountArray[i] / denominator;
+        }
+
+        // heapSort function
         function heapSort(arr){
             var N = arr.length;
         

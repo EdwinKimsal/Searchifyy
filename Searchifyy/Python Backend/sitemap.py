@@ -3,7 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 
 # url of sitemap
-link = 'https://www.tutorialspoint.com/sitemap-tutorials.xml'
+link = 'https://terrytao.wordpress.com/sitemap.xml'
 
 # requesting the site
 site = requests.get(link)

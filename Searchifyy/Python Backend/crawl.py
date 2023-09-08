@@ -6,12 +6,12 @@ import random
 import time
 
 # whiteList, que, pushQue
-whiteList = 'https://www.tutorialrepublic.com/'
-que = [whiteList]
+whiteList = 'https://11011110.github.io/'
+que = ['https://11011110.github.io/blog/all/']
 pushQue = []
 
 # depth
-depth = 2
+depth = 1
 
 # link
 link = 'a[href]'
