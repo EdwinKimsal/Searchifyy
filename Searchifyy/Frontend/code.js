@@ -1,5 +1,8 @@
 // search algorithm
 function score(){
+    // start timer
+    var start = Date.now() / 1000;
+
     // variables
     var query = document.getElementById('searchArea').value.toLowerCase();
     var output = document.getElementById('result');
@@ -12,7 +15,6 @@ function score(){
     var countFrequency = [];
     var countArray = [];
     var totalCount = 0;
-    var avgScore = 0;
     var count = 0;
     output.innerHTML = '';
 
@@ -94,33 +96,18 @@ function score(){
             }
         }
 
-        // getting the avgScore
-        for (var i = 0; i < totalCountArray.length; i++){
-            avgScore += totalCountArray[i];
-        }
-
-        avgScore = ((avgScore / totalCountArray.length) - .0001);
-
-        // getting rid of all sites less than the avg score
-        for (var i = totalCountArray.length; i >= 0; i--){
-            if (totalCountArray[i] < avgScore){
-                totalCountArray.splice(i, 1);
-                newUrlArray.splice(i, 1);
-            }
-        }
-
         // getting the amount of characters after the domain
         for (var i = 0; i < newUrlArray.length; i++){
             tempUrlArray.push(newUrlArray[i].slice(newUrlArray[i].indexOf('/', 8), -1));
         }
 
         // getting the length of each object in the newUrlArray
-        urlArrayCount = tempUrlArray.map(u => u.length);
+        urlArrayCount = tempUrlArray.map(u => u.length + 1);
 
         // dividing the scores by the amount to characters per url
         for (var i = 0; i < totalCountArray.length; i++){
-            var denominator = urlArrayCount[i] * .01;
-            totalCountArray[i] = totalCountArray[i] / denominator;
+            var denominator = urlArrayCount[i];
+            totalCountArray[i] += (totalCountArray[i] / denominator);
         }
 
         // heapSort function
@@ -189,6 +176,7 @@ function score(){
                 const linebreak = document.createElement('br');
                 link.href = newUrlArray[i];
                 link.innerHTML = newUrlArray[i];
+                link.id = "siteLink"
                 section.appendChild(link);
                 section.appendChild(linebreak);
                 output.appendChild(section);
@@ -202,4 +190,25 @@ function score(){
     else{
         output.innerHTML = ''
     }
+
+    // stopping time
+    var stop = Date.now() / 1000;
+
+    // getting total time elapsed'
+    var totalTime = (stop - start).toFixed(4);
+
+    // showing nth results in x seconds
+    document.getElementById('time').innerHTML = "Showing " + newUrlArray.length + " results in " + totalTime + " seconds."
 }
+
+
+// Adding an event listener to the search box/area
+var searchArea = document.getElementById("searchArea");
+searchArea.addEventListener("keydown", function (e) {
+    // if enter is pressed...
+    if (e.code === "Enter") {
+        // do not restart the page but call score()
+        e.preventDefault();
+        score();
+    }
+});

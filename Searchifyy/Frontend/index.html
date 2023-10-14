@@ -4,15 +4,27 @@
     <head>
         <title>Searchifyy</title>
         <link rel="stylesheet" href="style.css">
+        <link rel="icon" href="Images/searchifyy.png">
     </head>
 
     <!-- Body -->
     <body>
-        <h1>Searchifyy</h1>
+        <a id="githubLink" href="https://github.com/EdwinKimsal/Searchifyy">
+            <img id="logo" src="Images/searchifyy.png" alt="Searchifyy Logo">
+            <h1>Searchifyy</h1>
+        </a>
         <form>
-            <input class="search" id="searchArea" type="text" placeholder="Search...">
-            <input class="search" id="searchButton" type="button" value="Search" onclick=score()>
+            <input class="search" id="searchArea" type="search" placeholder="A search engine for developers">
+            <input class="search" id="searchButton" type="button" value="Search" onclick=score()></button>
         </form>
+
+        <br>
+
+        <!-- Showing nth results in x seconds -->
+        <span id="time">
+        </span>
+
+        <br>
 
         <!-- Result -->
         <main id="result"></main>
