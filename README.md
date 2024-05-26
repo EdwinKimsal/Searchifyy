@@ -32,7 +32,7 @@
   </ul>
 </ul>
 
-## The Index
+## Index
 This is the collection of the data that is used by Searchifyy to provide users results based off of his or her query. This data includes the URL's of over 150,000 websites under numerous domains, which were purposely selected to answer the needs of computer science students. Some of these domains include Wikipedia, GeeksForGeeks, The Odin Project, and Calculator Soup.
 
 ## Scoring Algorithm
