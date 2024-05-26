@@ -51,5 +51,5 @@ Essentially, each site is given a score as stated in the section _Scoring Algori
     </ul>
 </ul>
 
-## Summary
-This project is a work in progress, but it is a simple search engine that can handle multi-worded queries. It searches through 3+ million pages that were either crawled or taken from a sitemap with a Python script. Multiple websites were used. This search engine gives each page a score which is used to rank the pages based on the query. The higher the score the higher the page will rank. The score is determined by adding the scores of each word. The score of each word is the frequency of the word in the URL divided by the number of pages that contain the word. This is heavily based on [this video by Computerphile](https://www.youtube.com/watch?v=vrjAIBgxm_w).
+## Website
+https://searchifyy.netlify.app/
