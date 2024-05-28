@@ -43,7 +43,7 @@ The image below demonstrates how each site is given a score based on the user's 
 <img align="center" src="https://github.com/EdwinKimsal/Searchifyy/assets/107333344/fd7d9b77-bef6-46ad-aa61-a9b6d8153561">
 
 ## Sorting Algorithm
-Essentially, each site is given a score as stated in the section _Scoring Algorithm_. After each site gets a score, all zero-scores are removes, and a sorting algorithm ranks that websites from the greatest score (highest rank) to the lowest score (lowest rank).
+Essentially, each site is given a score as stated in the section _Scoring Algorithm_. After each site gets a score, all zero-scores are removed, and a sorting algorithm ranks that websites from the greatest score (highest rank) to the lowest score (lowest rank).
 
 <ul>
     <li>Heap Sort</li>
