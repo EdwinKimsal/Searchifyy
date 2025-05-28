@@ -2,7 +2,7 @@
 <img align="center" src="https://github.com/EdwinKimsal/Searchifyy/assets/107333344/00fc0e22-425c-4989-9ea8-fda67e26d8be">
 
 ## Overview
-Searchifyy is a small search engine that was made for developers to be used as a learning tool. If developers can learn how a search engine works, than these developers can create better queries that yield better results in daily use. This search engine was created from scracth through the use of Python, HTML, CSS, and Javascript. Python was used for crawling and indexing while HTML, CSS, and Javascript were used for ranking.
+Searchifyy is a small search engine that was made for developers to be used as a learning tool. If developers can learn how a search engine works, then these developers can create better queries that yield better results in daily use. This search engine was created from scratch through the use of Python, HTML, CSS, and JavaScript. Python was used for crawling and indexing, while HTML, CSS, and JavaScript were used for ranking.
 
 ## Folders & Files
 <ul>
